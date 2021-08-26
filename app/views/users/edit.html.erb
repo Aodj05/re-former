@@ -1,0 +1,33 @@
+<!-- <form action="/users" method="post" accept-charset="UTF-8">
+<label for="username">Username:</label>
+<input type="text" id="username" name="user[username]">
+<label for="password">Password:</label>
+<input type="text" id="password" name="user[password]">
+<label for="email">Email:</label>
+<input type="text" id="email" name="user[email]">
+<input type="submit" value="Submit">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form> -->
+
+<!-- <%= form_tag("/users", method: "post") do %>
+<%= label_tag(:username, "Username:") %>
+<%= text_field(:username, placeholder: "") %>
+<%= label_tag(:password, "Password:") %>
+<%= password_field_tag(:password)%>
+<%= label_tag(:email, "Email:")%>
+<%= email_field(:email, placeholder: "") %>
+<%= submit_tag("Submit")%>
+<% end %> -->
+
+<%= form_with model: @user do |f| %>
+<%= f.label(:username)%>
+<%= f.text_field(:username, placeholder: "")%>
+<%= f.label(:password)%>
+<%= f.text_field(:password, placeholder: "")%>
+<%= f.label(:email)%>
+<%= f.text_field(:email, placeholder: "")%>
+<%= f.submit("Submit")%>
+<% end %>
+
+<%= @user.errors.full_messages.each do |error_message| %>
+<p><%= error_message %></p>
